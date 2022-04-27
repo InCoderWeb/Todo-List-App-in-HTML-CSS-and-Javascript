@@ -1,0 +1,302 @@
+/* --------------------- Created By InCoder --------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 70%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: rgb(0 0 0 / 50%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0 0 0 / 60%);
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: rgb(147 51 234 / 75%);
+}
+
+.container {
+  height: 25rem;
+  position: relative;
+  background: #fff;
+  border-radius: 1rem;
+  width: clamp(18rem, 50vw, 30rem);
+}
+
+.newTodo {
+  top: -5%;
+  border: 0;
+  right: -5%;
+  display: grid;
+  color: #fff;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  position: absolute;
+  place-items: center;
+  border-radius: 50rem;
+  background: rgb(147, 51, 234);
+  transition: background 0.1s ease-in-out;
+  box-shadow: 0 0 20px rgb(255 255 255 / 20%);
+}
+
+.newTodo:hover {
+  background: rgb(128 36 210);
+}
+
+.container .title {
+  margin-top: 0.6rem;
+  text-align: center;
+  color: rgb(0 0 0 / 80%);
+  font-size: clamp(1.8rem, 4vw, 2rem);
+}
+
+.todoList {
+  width: 100%;
+  height: 100%;
+  max-height: 85%;
+  overflow-y: scroll;
+  padding-top: 0.6rem;
+}
+
+.todoList .item {
+  display: flex;
+  max-width: 100%;
+  cursor: pointer;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  justify-content: space-between;
+  transition: background 0.2s ease-in-out;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.todoList .item:last-child {
+  border-bottom: 0;
+}
+
+.todoList .item:hover {
+  background: rgb(0 0 0 / 4%);
+}
+
+.todoList .item.active {
+  background: rgb(0 0 0 / 4%);
+}
+
+.todoList .item .header {
+  display: flex;
+  max-width: 88%;
+  align-items: center;
+}
+
+.todoList .item .sNo {
+  font-size: 1rem;
+  margin-right: 0.8rem;
+}
+
+.todoList .item .todoTitle {
+  font-size: 0.9rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.todoList .item .options {
+  position: relative;
+}
+
+.todoList .item .options .toggleBtn {
+  border: 0;
+  cursor: pointer;
+  margin-left: 0.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50rem;
+  background: transparent;
+  transition: background 0.2s ease-in-out;
+}
+
+.todoList .item .options .toggleBtn i {
+  pointer-events: none;
+}
+
+.todoList .item .options .toggleBtn:hover {
+  background: rgb(0 0 0 / 10%);
+}
+
+.todoList .item .options .optionDropdown {
+  top: 75%;
+  height: 0;
+  opacity: 0;
+  right: 50%;
+  z-index: 1;
+  width: 9rem;
+  overflow: hidden;
+  position: absolute;
+  background: #fff;
+  transition: all 0.4s;
+  pointer-events: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+}
+
+.noTodo{
+  margin-top: .5rem;
+  text-align: center;
+  color: rgb(0 0 0 / 80%);
+}
+
+.todoList .item .options .optionDropdown :is(.edit, .delete, .showMore) {
+  transition: all 0.2s;
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid rgb(0 0 0 / 8%);
+}
+
+.todoList .item .options .optionDropdown .delete {
+  border: 0;
+}
+
+.todoList .item .options .optionDropdown .edit:hover {
+  color: #fff;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  background: rgb(37, 99, 235) !important;
+}
+
+.todoList .item .options .optionDropdown .delete:hover {
+  color: #fff;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  background: rgb(220, 38, 38) !important;
+}
+
+.todoList .item.active .options .optionDropdown {
+  opacity: 1;
+  height: 4.6rem;
+  overflow: visible;
+  pointer-events: all;
+}
+
+.todoList .item.active .options .toggleBtn {
+  background: rgb(0 0 0 / 10%);
+}
+
+.todoList .item .options .optionDropdown :is(.edit, .delete):hover {
+  background: rgb(0 0 0 / 6%);
+}
+
+.newTodoContainer {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: fixed;
+  place-items: center;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  background: rgb(0 0 0 / 20%);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.newTodoContainer.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.newTodoWrapper {
+  display: grid;
+  padding: 0 1rem;
+  background: #fff;
+  position: relative;
+  place-items: center;
+  border-radius: 0.6rem;
+  transform: translateY(-2rem);
+  width: clamp(18rem, 50vw, 30rem);
+  transition: transform 0.3s ease-in-out;
+}
+
+.newTodoContainer.show .newTodoWrapper {
+  transform: translateY(0rem);
+}
+
+.newTodoWrapper .closeBtn {
+  top: -8%;
+  border: 0;
+  right: -5%;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  position: absolute;
+  place-items: center;
+  border-radius: 50rem;
+  background: rgb(147, 51, 234);
+  transition: background 0.1s ease-in-out;
+  box-shadow: 0 0 20px rgb(255 255 255 / 20%);
+}
+
+.newTodoWrapper .header .title {
+  margin-top: 0.6rem;
+  text-align: center;
+  margin-bottom: 0.6rem;
+  color: rgb(0 0 0 / 80%);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+}
+
+.newTodoWrapper #todoData {
+  outline: none;
+  padding: 0.4rem 0.4rem;
+  margin-bottom: 0.8rem;
+  border-radius: 0.3rem;
+  width: calc(100% - 4rem);
+  border: 2px solid rgb(0 0 0 / 30%);
+}
+
+.newTodoWrapper #todoData::placeholder {
+  color: rgb(0 0 0 / 60%);
+}
+
+.newTodoWrapper #todoData:focus {
+  border: 2px solid rgb(147 51 234);
+}
+
+.newTodoWrapper .submitForm {
+  border: 0;
+  width: 8rem;
+  color: #fff;
+  height: 2.3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+  margin-bottom: 1rem;
+  border-radius: 0.3rem;
+  background: rgb(147 51 234 / 90%);
+}
+
+.newTodoWrapper .submitForm:hover {
+  background: rgb(147 51 234);
+}
